@@ -1,0 +1,19 @@
+<%+header%>
+    <script type="text/javascript" src="<%=resource%>/xhr.js"></script>
+    <div class="cbi-map">
+        <h2>基站扫描结果</h2>
+        <p>
+            <table class="cbi-section-table">
+                <tr>
+                    <th>网络制式</th>
+                    <th>运营商</th>
+                    <th>EARFCN</th>
+                    <th>PCI</th>
+                    <th>RSRP</th>
+                    <th>RSRQ</th>
+                </tr>
+                <% luci.controller.cellscan.parse_results() %>
+            </table>
+        </p>
+    </div>
+<%+footer%>
