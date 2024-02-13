@@ -12,11 +12,12 @@ function parse_results()
     local cellinfo = io.open("/tmp/kpcellinfo", "r")
     if cellinfo then
         for line in cellinfo:lines() do
-            local mode, operator, earfcn, pci, rsrp, rsrq = line:match('+QSCAN: "(.-)",(.-),(.-),(.-),(.-),(.+)')
+            local mode, operator, band, earfcn, pci, rsrp, rsrq = line:match('+QSCAN: "(.-)",(.-),(.-),(.-),(.-),(.-),(.+)')
             if mode and operator and earfcn and pci and rsrp and rsrq then
                 luci.template.render("cellscan/cellscan_row", {
                     mode = mode,
                     operator = operator,
+                    band = band,
                     earfcn = earfcn,
                     pci = pci,
                     rsrp = rsrp,
@@ -29,6 +30,7 @@ function parse_results()
         luci.template.render("cellscan/cellscan_row", {
             mode = "无有效数据",
             operator = "",
+            band = "",
             earfcn = "",
             pci = "",
             rsrp = "",
